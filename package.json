@@ -1,0 +1,40 @@
+{
+	"name": "@turystack/config",
+	"description": "The Turystack baseline: the biome, TypeScript and vitest decisions that do not depend on where the code runs.",
+	"private": false,
+	"version": "1.0.0",
+	"packageManager": "pnpm@10.12.3",
+	"sideEffects": false,
+	"exports": {
+		"./biome": "./biome.json",
+		"./biome.json": "./biome.json",
+		"./tsconfig": "./tsconfig.base.json",
+		"./tsconfig.base.json": "./tsconfig.base.json",
+		"./vitest": {
+			"types": "./vitest.base.d.ts",
+			"default": "./vitest.base.js"
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=20"
+	},
+	"files": [
+		"biome.json",
+		"tsconfig.base.json",
+		"vitest.base.d.ts",
+		"vitest.base.js"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/turystack/config.git"
+	},
+	"scripts": {
+		"check:fixtures": "node scripts/check-fixtures.mjs"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.2"
+	}
+}

@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+  # Called by publish.yml, so nothing reaches npm without this passing.
+  workflow_call:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # No lockfile here: this package ships configuration, and its only
+      # dependency is the biome the fixture is proved against.
+      - run: pnpm install
+
+      # The fixture is a consumer. It resolves this package by the specifier a
+      # real project writes and asserts the formatter, one rule and the import
+      # order arrive — because a baseline that fails to arrive is silent.
+      - name: Baseline fixtures
+        run: pnpm check:fixtures
+        env:
+          BIOME: ./node_modules/.bin/biome

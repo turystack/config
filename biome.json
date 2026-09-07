@@ -1,0 +1,112 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.4/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**/src/**/*",
+			"!**/dist",
+			"!**/coverage*"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 80,
+		"formatWithErrors": false
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							[
+								":NODE:"
+							],
+							":BLANK_LINE:",
+							[
+								":PACKAGE:",
+								"!@turystack/**",
+								"!@repo/**"
+							],
+							":BLANK_LINE:",
+							[
+								"@turystack/**"
+							],
+							":BLANK_LINE:",
+							[
+								"@repo/**"
+							],
+							":BLANK_LINE:",
+							[
+								":PATH:"
+							]
+						]
+					}
+				},
+				"useSortedKeys": {
+					"level": "on",
+					"options": {}
+				},
+				"useSortedProperties": {
+					"level": "on",
+					"options": {}
+				}
+			}
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"useBlockStatements": "error"
+			}
+		}
+	},
+	"json": {
+		"parser": {
+			"allowComments": true,
+			"allowTrailingCommas": true
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "always",
+			"bracketSpacing": true,
+			"trailingCommas": "all",
+			"expand": "always"
+		}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"**/*.json"
+			],
+			"assist": {
+				"actions": {
+					"source": {
+						"useSortedKeys": {
+							"level": "off",
+							"options": {}
+						},
+						"useSortedProperties": {
+							"level": "off",
+							"options": {}
+						}
+					}
+				}
+			}
+		}
+	]
+}
